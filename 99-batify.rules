@@ -13,7 +13,7 @@ IMPORT{program}="/usr/bin/xpub", \
 RUN+="/bin/su $env{XUSER} -c 'dunstify -h string:x-dunst-stack-tag:bAtTeRy-n0tIf -u normal -i battery-caution \"Battery status\" \"Battery is getting low at $attr{capacity}%\"'"
 
 SUBSYSTEM=="power_supply", ACTION=="change", \
-ENV{POWER_SUPPLY_ONLINE}=="0", ENV{POWER}="off", \
+ENV{POWER_SUPPLY_CAPACITY}!="[0-1]*[0-9]", ENV{POWER_SUPPLY_ONLINE}=="0", ENV{POWER}="off", \
 OPTIONS+="last_rule", \
 IMPORT{program}="/usr/bin/xpub", \
 RUN+="/bin/su $env{XUSER} -c 'dunstify -h string:x-dunst-stack-tag:bAtTeRy-n0tIf -u low -i battery-missing \"Battery status\" \"Charging cable has been unplugged.\"'"
