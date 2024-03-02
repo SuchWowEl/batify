@@ -1,11 +1,11 @@
-ACTION=="change", KERNEL=="BAT[0-9]", \
+ACTION=="change", KERNEL=="BAT0", \
 SUBSYSTEM=="power_supply", \
 ATTR{status}=="Discharging", \
 ATTR{capacity}=="[0-9]", \
 IMPORT{program}="/usr/bin/xpub", \
 RUN+="/bin/su $env{XUSER} -c 'dunstify -h string:x-dunst-stack-tag:bAtTeRy-n0tIf -u critical -i battery-empty \"Battery status\" \"Battery level is CRITICAL at $attr{capacity}%\"'"
 
-ACTION=="change", KERNEL=="BAT[0-9]", \
+ACTION=="change", KERNEL=="BAT0", \
 SUBSYSTEM=="power_supply", \
 ATTR{status}=="Discharging", \
 ATTR{capacity}=="1[0-9]", \
